@@ -443,7 +443,7 @@ public:
      * @throws `out_of_range` if `index` is out of the array's bounds
      */
     T& operator[](int32_t index) {
-        return at(index, true);
+        return at(index+1, true);
     }
 
     /**

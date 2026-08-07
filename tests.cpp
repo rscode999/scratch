@@ -38,7 +38,20 @@ void test_remove() {
 }
 
 
+void test_overloads() {
+    fast_linked_list<char> l;
+    l.push_back('a');
+    l.push_back('b');
+    l.push_back('c');
+
+    assert_equals('a', l[0]);
+    assert_equals('c', l[2]);
+}
+
+
+
 int main() {
     test_add();
     test_remove();
+    test_overloads();
 }
