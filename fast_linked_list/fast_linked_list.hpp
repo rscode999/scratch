@@ -668,7 +668,6 @@ void fast_linked_list<T>::pop_back() {
     }
 
     if(n_elements == 1) {
-        throw std::exception();
         //delete the only node
         Node* delete_node = end_node; 
         delete delete_node;
