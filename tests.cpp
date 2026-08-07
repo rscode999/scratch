@@ -27,6 +27,15 @@ void test_add() {
 }
 
 
+void test_remove() {
+    fast_linked_list<char> l;
+    
+    l.push_back('a');
+    l.pop_back();
+    assert_equals(0, l.size());
+
+    std::cout << "Tests passed" << std::endl;
+}
 
 
 int main() {
