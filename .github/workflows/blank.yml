@@ -30,7 +30,9 @@ jobs:
         run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          g++ tests.cpp -o tests
-          ./tests.out
+      - name: Compile
+        run: g++ tests.cpp -o tests
+        
+      # Runs a set of commands using the runners shell
+      - name: Run
+        run: ./tests
