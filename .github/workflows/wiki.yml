@@ -38,7 +38,7 @@ jobs:
           # Copy the components folder if the wiki supports subdirectories, 
           # or flatten them depending on how you want them structured in the wiki.
           mkdir -p wiki-repo/components
-          cp docs/components/*.md wiki-repo/components/
+          cp docs/class_docs/*.md wiki-repo/class_docs/
 
       - name: Push to Wiki
         run: |
