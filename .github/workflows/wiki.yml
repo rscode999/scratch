@@ -25,20 +25,17 @@ jobs:
 
       - name: Update Wiki Content
         run: |
-          # Clear existing wiki files (optional, but ensures deleted docs are removed)
+          # Clear existing wiki files
           rm -rf wiki-repo/*
           
-          # Copy your documentation into the wiki repository
-          # Assumes your main doc file is named index.md or Home.md (GitHub wikis use Home.md as the landing page)
+          # Copy the main documentation homepage
           cp docs/*.md wiki-repo/
           
-          # If GitHub wiki expects 'Home.md' as the landing page and your main file is named differently (e.g., README.md):
-          # cp docs/documentation.md wiki-repo/Home.md
-          
-          # Copy the components folder if the wiki supports subdirectories, 
-          # or flatten them depending on how you want them structured in the wiki.
-          mkdir -p wiki-repo/components
-          cp docs/class_docs/*.md wiki-repo/class_docs/
+          # Safely copy class_docs if it exists and contains files
+          mkdir -p wiki-repo/class_docs
+          if [ -d "docs/class_docs" ] && [ "$(ls -A docs/class_docs)" ]; then
+            cp -r docs/class_docs/* wiki-repo/class_docs/
+          fi
 
       - name: Push to Wiki
         run: |
