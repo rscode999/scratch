@@ -1,0 +1,49 @@
+name: Publish Wiki
+
+on:
+  workflow_run:
+    workflows: ["CI"] # Name of the first workflow
+    types:
+      - completed
+
+jobs:
+  build-wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Git Identity
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Clone Wiki Repository
+        run: |
+          # The wiki is a separate git repository hosted alongside your main repo
+          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.wiki.git wiki-repo
+
+      - name: Update Wiki Content
+        run: |
+          # Clear existing wiki files (optional, but ensures deleted docs are removed)
+          rm -rf wiki-repo/*
+          
+          # Copy your documentation into the wiki repository
+          # Assumes your main doc file is named index.md or Home.md (GitHub wikis use Home.md as the landing page)
+          cp docs/*.md wiki-repo/
+          
+          # If GitHub wiki expects 'Home.md' as the landing page and your main file is named differently (e.g., README.md):
+          # cp docs/documentation.md wiki-repo/Home.md
+          
+          # Copy the components folder if the wiki supports subdirectories, 
+          # or flatten them depending on how you want them structured in the wiki.
+          mkdir -p wiki-repo/components
+          cp docs/components/*.md wiki-repo/components/
+
+      - name: Push to Wiki
+        run: |
+          cd wiki-repo
+          git add .
+          git status
+          git diff-index --quiet HEAD || git commit -m "Auto-update wiki from docs/ [skip ci]"
+          git push origin master
