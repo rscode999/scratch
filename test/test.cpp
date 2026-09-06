@@ -1,14 +1,16 @@
 #include "include/cunit.hpp"
 
+#include <xtensor/containers/xarray.hpp>
+
 #include <vector>
 
 using namespace cunit;
+using namespace xt;
 
 void test_vectors() {
-    std::vector<int> expected = {1, 2, 3, 4, 5};
-    std::vector<int> result = {1, 2, 3, 4, 5};
-
-    CUnit::assert_iterable_equals(expected, result);
+    xarray<double> expected = {1, 2, 3, 4};
+    xarray<double> result = {1, 2, 3, 4};
+    assert_array_equals(expected, result);
 }
 
 int main() {
