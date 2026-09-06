@@ -1,6 +1,6 @@
 # LossCalculator
 
-[Back to central documentation](../Home.md)
+[Back to central documentation](Home.md)
 
 Computes error between predicted and expected values. Used as the first step in the backwards pass.
 

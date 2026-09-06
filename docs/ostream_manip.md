@@ -1,6 +1,6 @@
 # Output Stream Manipulators
 
-[Back to central documentation](../Home.md)
+[Back to central documentation](Home.md)
 
 Special functions that change the behavior of output streams.
 

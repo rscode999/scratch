@@ -1,6 +1,6 @@
 # NetworkComponent
 
-[Back to central documentation](../Home.md)
+[Back to central documentation](Home.md)
 
 Node in a network.
 
