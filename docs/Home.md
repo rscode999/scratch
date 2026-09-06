@@ -44,11 +44,11 @@ Additional information about the method. Includes more details about what the me
 
 All functionality is under the `cast` namespace.
 
-* [ActivationFunction](activation_function.md)
-* [NetworkComponent](network_component.md)
-* [Network](network.md)
-* [Optimizer](optimizer.md)
-* [Output Stream Manipulators](ostream_manip.md)
+* [ActivationFunction](activation_function)
+* [NetworkComponent](network_component)
+* [Network](network)
+* [Optimizer](optimizer)
+* [Output Stream Manipulators](ostream_manip)
 
 
 ## Network Branch Rules

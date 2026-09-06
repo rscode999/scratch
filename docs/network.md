@@ -1,6 +1,6 @@
 # Network
 
-[Back to central documentation](Home.md)
+[Back to central documentation](Home)
 
 Trainable predictor with user-defined structure.
 

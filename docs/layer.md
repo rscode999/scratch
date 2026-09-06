@@ -1,6 +1,6 @@
 # Layer
 
-[Back to central documentation](Home.md)
+[Back to central documentation](Home)
 
 Contains trainable weights. Only Layers are affected by optimization passes.
 

@@ -31,16 +31,13 @@ jobs:
           # Clear existing wiki files
           rm -rf wiki-repo/*
           
-          # Copy your main documentation file and rename it to Home.md
-          # Replace 'docs/index.md' with the actual filename of your main documentation file
-          cp docs/Home.md wiki-repo/Home.md
-          
-          # Copy any other markdown files from docs/ (excluding the main one if it's there)
-          # or copy class_docs as before
-          mkdir -p wiki-repo/class_docs
-          if [ -d "docs/class_docs" ] && [ "$(ls -A docs/class_docs)" ]; then
-            cp -r docs/class_docs/* wiki-repo/class_docs/
-          fi
+          # Copy all files from the docs/ root (preserving .md extensions and images)
+          for file in docs/*; do
+            if [ -f "$file" ]; then
+              filename=$(basename "$file")
+              cp "$file" "wiki-repo/$filename"
+            fi
+          done
 
       - name: Push to Wiki
         run: |
