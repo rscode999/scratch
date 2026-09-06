@@ -6,6 +6,9 @@ on:
     types:
       - completed
 
+permissions:
+  contents: write
+
 jobs:
   build-wiki:
     runs-on: ubuntu-latest
@@ -28,10 +31,12 @@ jobs:
           # Clear existing wiki files
           rm -rf wiki-repo/*
           
-          # Copy the main documentation homepage
-          cp docs/*.md wiki-repo/
+          # Copy your main documentation file and rename it to Home.md
+          # Replace 'docs/index.md' with the actual filename of your main documentation file
+          cp docs/Home.md wiki-repo/Home.md
           
-          # Safely copy class_docs if it exists and contains files
+          # Copy any other markdown files from docs/ (excluding the main one if it's there)
+          # or copy class_docs as before
           mkdir -p wiki-repo/class_docs
           if [ -d "docs/class_docs" ] && [ "$(ls -A docs/class_docs)" ]; then
             cp -r docs/class_docs/* wiki-repo/class_docs/
